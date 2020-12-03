@@ -1,3 +1,62 @@
+# @hypersprite/jest-electron-runner - quick and dirty sub in for running old code in Electron 11
+
+> Note, this will be depreciated when the parent is updated to work or we no longer need this.
+
+Has the following settings:
+
+`app.allowRendererProcessReuse = false;`
+
+```js
+const win = new BrowserWindow({
+  show: false, // (@jest-runner/electron package default)
+  webPreferences: {
+    // nodeIntegration is turned off by default since Electron 5
+    nodeIntegration: true, // (@jest-runner/electron package default)
+    // https://github.com/electron/electron/blob/master/docs/tutorial/context-isolation.md
+    contextIsolation: false,
+    // https://www.electronjs.org/docs/breaking-changes#default-changed-enableremotemodule-defaults-to-false
+    enableRemoteModule: true,
+  },
+});
+```
+
+Setup:
+
+clone repo then
+
+```bash
+yarn
+git submodule init
+git submodule update
+cd fiddle && yarn
+cd ../ && yarn build
+yarn test
+```
+
+if you make changes,
+
+```bash
+yarn build
+yarn test
+```
+
+again
+
+Currently there are a lot of test failing, the main reason to run the test is to make sure it can run. Have not spent time to investigate these.
+
+Current results:
+
+```bash
+Test Suites: 37 failed, 36 passed, 73 total
+Tests:       3 failed, 1 skipped, 102 passed, 106 total
+Snapshots:   3 failed, 11 passed, 14 total
+Time:        72.776s
+```
+
+Only publishing the `electron` package.
+
+> Note: all of this below is from the original readme
+
 [![CircleCI](https://circleci.com/gh/facebook-atom/jest-electron-runner.svg?style=svg)](https://circleci.com/gh/facebook-atom/jest-electron-runner)
 
 

@@ -24,6 +24,7 @@ const isMain = process.env.isMain === 'true';
 app.commandLine.appendSwitch('high-dpi-support', 1);
 app.commandLine.appendSwitch('force-device-scale-factor', 1);
 
+app.allowRendererProcessReuse = false;
 app.on('ready', async () => {
   // electron automatically quits if all windows are destroyed,
   // this mainWindow will keep electron running even if all other windows

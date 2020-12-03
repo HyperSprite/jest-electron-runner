@@ -46,7 +46,14 @@ const _runInBrowserWindow = (testData: IPCTestData): Promise<TestResult> => {
     const workerID = makeUniqWorkerId();
     const win = new BrowserWindow({
       show: false,
-      webPreferences: {nodeIntegration: true},
+      webPreferences: {
+        // nodeIntegration is turned off by default since Electron 5
+        nodeIntegration: true,
+        // https://github.com/electron/electron/blob/master/docs/tutorial/context-isolation.md
+        contextIsolation: false,
+        // https://www.electronjs.org/docs/breaking-changes#default-changed-enableremotemodule-defaults-to-false
+        enableRemoteModule: true,
+      },
     });
 
     win.loadURL(`file://${require.resolve('../index.html')}`);

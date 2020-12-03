@@ -1,11 +1,11 @@
 {
-    "name": "@jest-runner/electron",
+    "name": "@hypersprite/jest-runner-electron",
     "version": "3.0.0",
     "description": "Jest runner that spawns atom/electron workers instead of node",
     "author": "Aaron Abramov",
     "license": "MIT",
-    "homepage": "https://github.com/facebook-atom/jest-electron-runner",
-    "repository": "https://github.com/facebook-atom/jest-electron-runner",
+    "homepage": "https://github.com/hyperspite/jest-electron-runner",
+    "repository": "https://github.com/hypersprite/jest-electron-runner",
     "dependencies": {
         "@jest-runner/core": "^3.0.0",
         "@jest-runner/rpc": "^3.0.0",
